@@ -1,162 +1,35 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JUNO AI - Student App</title>
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#182848">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102a56"><link rel="manifest" href="manifest.webmanifest">
+<title>JUNO AI</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#172033}
-header{background:#182848;color:white;padding:22px 18px;border-radius:0 0 22px 22px}
-h1{margin:0 0 5px} .sub{opacity:.85}
-main{padding:16px;max-width:800px;margin:auto}.card{background:white;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 3px 14px #0001}
-button{border:0;border-radius:12px;padding:12px 15px;margin:5px;background:#182848;color:white;font-weight:bold}
-button.secondary{background:#e8edf7;color:#182848}.hidden{display:none}
-.stat{font-size:20px;font-weight:bold}.bar{height:12px;background:#e5eaf3;border-radius:10px;overflow:hidden}.fill{height:100%;width:0;background:#182848}
-.task{display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px solid #e3e7ef;border-radius:12px;margin:8px 0}
-.gamearea{background:#101827;color:white;border-radius:16px;padding:16px;text-align:center;min-height:260px}
-.choice{display:block;width:100%;margin:8px 0;background:#293b5f}.good{background:#16834b!important}.bad{background:#b63b3b!important}
-#dodge{position:relative;height:210px;background:#16243a;border-radius:14px;overflow:hidden}
-.player{position:absolute;bottom:10px;left:50%;width:42px;height:42px;border-radius:10px;background:#fff;transform:translateX(-50%)}
-.coin{position:absolute;width:25px;height:25px;border-radius:50%;background:#ffd84d}
-.note{font-size:13px;color:#68738a}
-</style>
-</head>
-<body>
+body{margin:0;font-family:Arial,sans-serif;background:#eef3f9;color:#14213d}
+header{background:#102a56;color:white;padding:24px 18px;border-radius:0 0 28px 28px}
+h1{margin:0;font-size:36px}.sub{font-size:18px;margin-top:8px}
+.card{background:white;margin:18px;border-radius:22px;padding:20px;box-shadow:0 5px 18px #0001}
+textarea{width:100%;box-sizing:border-box;border:1px solid #ccd5e2;border-radius:14px;padding:14px;font-size:16px;min-height:90px}
+button{background:#102a56;color:white;border:0;border-radius:13px;padding:13px 16px;font-weight:bold;font-size:15px;margin:6px 4px 0 0}
+.answer{white-space:pre-wrap;background:#f4f7fb;padding:15px;border-radius:14px;margin-top:12px;min-height:40px}.small{color:#68758a;font-size:14px}
+</style></head><body>
 <header><h1>🚀 JUNO AI</h1><div class="sub">Student • Study • Career • Business • Games</div></header>
-<main>
-<div id="installBox" class="card" style="display:none">
-<h2>📲 JUNO AI ko App jaisa banao</h2>
-<p class="note">Home screen se seedha JUNO AI kholo.</p>
-<button id="installBtn">🚀 Install JUNO AI</button>
-</div>
-<div class="card">
-<h2>🎮 Mini Games</h2>
-<button onclick="show('brain')">🧠 Brain Battle</button>
-<button onclick="show('dodge')">🏃 Tap & Dodge</button>
-<button onclick="show('tasks')">🎯 Daily Mission</button>
-<p class="note">Games offline chal sakte hain. XP/coins sirf in-app points hain, real money nahi.</p>
-</div>
-
-<section id="brain" class="card hidden">
-<h2>🧠 JUNO Brain Battle</h2><div class="stat">Score: <span id="bs">0</span> | ❤️ <span id="life">3</span> | ⏱️ <span id="timer">30</span></div>
-<div class="bar"><div class="fill" id="bfill"></div></div>
-<div id="qbox" style="margin-top:15px"></div>
-<button class="secondary" onclick="show('home')">← Home</button>
-</section>
-
-<section id="dodge" class="card hidden">
-<h2>🏃 Tap & Dodge</h2><p>Left/right buttons se player ko move karo aur falling coins pakdo.</p>
-<div class="stat">Coins: <span id="coins">0</span></div>
-<div id="dodge"><div class="player" id="player"></div></div>
-<button onclick="move(-1)">⬅️ Left</button><button onclick="move(1)">➡️ Right</button>
-<button class="secondary" onclick="startDodge()">🔄 Start/Restart</button>
-<button class="secondary" onclick="show('home')">← Home</button>
-</section>
-
-<section id="tasks" class="card hidden">
-<h2>🎯 Daily Mission</h2>
-<div class="stat">XP: <span id="xp">0</span> ⭐ | Streak: <span id="streak">0</span> 🔥</div>
-<div id="tasklist"></div>
-<button onclick="bonus()">⭐ Bonus Task</button>
-<button class="secondary" onclick="show('home')">← Home</button>
-</section>
-
-<section id="home" class="card">
-<h2>📚 Student Hub</h2>
-<p>Study routine, Class 11 stream guide, business ideas, quiz aur career guidance.</p>
-<button onclick="alert('📖 Aaj 30 min ka focused study session karo!')">📖 Study Plan</button>
-<button onclick="alert('🎓 Stream: Science, Commerce, Arts — choice apne interest aur goal ke hisaab se karo.')">🎓 Class 11 Guide</button>
-<button onclick="alert('💼 Business ideas: reselling, tutoring, design/editing, local services. Budget chhota rakhkar start karo.')">💼 Business Guide</button>
-</section>
-</main>
-
+<div class="card"><h2>🤖 JUNO AI Assistant</h2>
+<p class="small">Study, Class 11, career, business aur daily goals ke baare me pucho.</p>
+<textarea id="q" placeholder="Example: Class 11 me Science ya Commerce kaise choose karu?"></textarea><br>
+<button onclick="ask()">Ask JUNO</button><button onclick="quick('Mere liye 2 ghante ka study plan banao.')">Study Plan</button>
+<button onclick="quick('Mujhe 5 low-budget student business ideas batao.')">Business</button>
+<div id="a" class="answer">JUNO yahan answer dega.</div></div>
+<div class="card"><h2>⚡ Offline Smart Help</h2>
+<p class="small">Internet na ho tab bhi basic guidance chalegi.</p>
+<button onclick="quick('Mujhe padhai me focus karne ke 5 practical tips do.')">Focus Tips</button>
+<button onclick="quick('Class 11 ke streams aur common career options samjhao.')">Class 11</button>
+<button onclick="quick('Aaj ka simple student mission banao.')">Daily Mission</button></div>
 <script>
-const $=id=>document.getElementById(id);
-function show(id){document.querySelectorAll('section').forEach(x=>x.classList.add('hidden'));$(id).classList.remove('hidden');if(id==='tasks')renderTasks();if(id==='brain')startBrain();if(id==='dodge')startDodge()}
-show('home');
-
-/* Brain Battle */
-const questions=[
-["India ki rajdhani kya hai?",["Mumbai","New Delhi","Lucknow","Jaipur"],1],
-["12 × 8 = ?",["86","96","108","112"],1],
-["Water ka chemical formula?",["CO2","O2","H2O","NaCl"],2],
-["CPU ka full form?",["Central Processing Unit","Computer Power Unit","Core Program Utility","Central Phone Unit"],0],
-["7 + 9 × 2 = ?",["32","25","28","23"],1],
-["भारत का राष्ट्रीय पशु?",["शेर","हाथी","बाघ","मोर"],2],
-["Sun ke sabse paas planet?",["Earth","Mars","Mercury","Venus"],2],
-["100 ka 15%?",["10","15","20","25"],1]
-];
-let bi=0,score=0,life=3,time=30,interval;
-function startBrain(){
- clearInterval(interval);bi=0;score=0;life=3;time=30;updateBrain();
- interval=setInterval(()=>{time--;updateBrain();if(time<=0||life<=0)endBrain()},1000);
-}
-function updateBrain(){$('bs').textContent=score;$('life').textContent=life;$('timer').textContent=time;$('bfill').style.width=(time/30*100)+'%';renderQ()}
-function renderQ(){
- if(time<=0||life<=0)return;
- let q=questions[bi%questions.length];
- $('qbox').innerHTML='<h3>'+q[0]+'</h3>'+q[1].map((a,i)=>`<button class="choice" onclick="answer(${i},${q[2]})">${a}</button>`).join('');
-}
-function answer(i,correct){
- document.querySelectorAll('.choice').forEach(b=>b.disabled=true);
- if(i===correct){score+=10}else{life--}
- bi++;setTimeout(()=>{if(life>0&&time>0)renderQ()},250);updateBrain();
-}
-function endBrain(){clearInterval(interval);$('qbox').innerHTML='<h2>🏁 Game Over!</h2><p>Final Score: '+score+'</p><button onclick="startBrain()">🔄 Play Again</button>';}
-
-/* Dodge */
-let px=50,coins=0,dTimer;
-function startDodge(){clearInterval(dTimer);px=50;coins=0;$('coins').textContent=coins;$('player').style.left=px+'%';let arena=$('dodge');arena.querySelectorAll('.coin').forEach(c=>c.remove());dTimer=setInterval(spawnCoin,650)}
-function move(dir){px=Math.max(8,Math.min(92,px+dir*10));$('player').style.left=px+'%'}
-function spawnCoin(){
- let arena=$('dodge'), c=document.createElement('div');c.className='coin';c.style.left=(5+Math.random()*90)+'%';c.style.top='-25px';arena.appendChild(c);
- let y=-25;let iv=setInterval(()=>{y+=5;c.style.top=y+'px';let cr=c.getBoundingClientRect(),pr=$('player').getBoundingClientRect();if(!(cr.right<pr.left||cr.left>pr.right||cr.bottom<pr.top||cr.top>pr.bottom)){coins++;$('coins').textContent=coins;c.remove();clearInterval(iv)}if(y>220){c.remove();clearInterval(iv)}},40)
-}
-
-/* Tasks */
-const tasks=[["📖","20 min padhai",20],["🧠","10 questions solve",20],["💧","Paani peena",10],["🏃","10 min exercise",15]];
-function day(){return new Date().toISOString().slice(0,10)}
-function load(){
- let d=JSON.parse(localStorage.junoTasks||'null');if(!d||d.date!==day())d={date:day(),xp:0,streak:(d?d.streak:0),done:[],bonus:false};
- return d
-}
-function save(d){localStorage.junoTasks=JSON.stringify(d)}
-function renderTasks(){
- let d=load();$('xp').textContent=d.xp;$('streak').textContent=d.streak;
- $('tasklist').innerHTML=tasks.map((t,i)=>`<div class="task"><span>${t[0]} ${t[1]} (+${t[2]} XP)</span><button ${d.done.includes(i)?'disabled':''} onclick="completeTask(${i})">${d.done.includes(i)?'✅ Done':'Complete'}</button></div>`).join('');
-}
-function completeTask(i){let d=load();if(!d.done.includes(i)){d.done.push(i);d.xp+=tasks[i][2];if(d.done.length===tasks.length)d.streak++;save(d);renderTasks()}}
-function bonus(){let d=load();if(!d.bonus){d.bonus=true;d.xp+=25;save(d);alert('⭐ Bonus complete! +25 XP');renderTasks()}else alert('Bonus task already claimed today.')}
-
-/* PWA install + offline support */
-let deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  const box = document.getElementById('installBox');
-  if (box) box.style.display = 'block';
-});
-document.getElementById('installBtn')?.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  const box = document.getElementById('installBox');
-  if (box) box.style.display = 'none';
-});
-window.addEventListener('appinstalled', () => {
-  const box = document.getElementById('installBox');
-  if (box) box.style.display = 'none';
-});
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
-
-</script>
-</body></html>
+const offline={focus:"1) Phone distractions kam karo.\n2) 25–30 min focused session rakho.\n3) Har session ka ek clear target rakho.\n4) 5 min break lo.\n5) Agle din ke 3 tasks likho.",
+class11:"Science: Maths/Science based paths. Commerce: accounts, business, finance aur related paths. Humanities/Arts: languages, social sciences, law, design aur many other paths. Interest, strengths aur future plan dekhkar choose karo.",
+business:"Low-budget ideas: tutoring, notes/design service, local digital help, reselling, simple content editing. Pehle skill + small test, phir investment badhao.",
+mission:"🎯 Aaj ka mission:\n• 45 min focused study\n• 10 questions practice\n• 20 min revision\n• Kal ke 3 tasks likho."};
+function quick(t){document.getElementById("q").value=t;ask()}
+function localAnswer(q){q=q.toLowerCase();if(q.includes("focus"))return offline.focus;if(q.includes("11")||q.includes("stream"))return offline.class11;if(q.includes("business"))return offline.business;if(q.includes("mission"))return offline.mission;return "Offline mode me basic answer available hai. Internet milne par JUNO ke real AI backend ko connect kiya ja sakta hai."}
+async function ask(){const q=document.getElementById("q").value.trim();if(!q)return;const a=document.getElementById("a");a.textContent="JUNO soch raha hai…";try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q})});if(!r.ok)throw 0;const d=await r.json();a.textContent=d.answer||localAnswer(q)}catch(e){a.textContent=localAnswer(q)}}
+if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script></body></html>

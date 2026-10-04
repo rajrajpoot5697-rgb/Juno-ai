@@ -1,11 +1,3 @@
-JUNO AI — Level 7 PWA
-1. Upload/replace the repository files with:
-   index.html
-   manifest.webmanifest
-   sw.js
-   icons/icon-192.png
-   icons/icon-512.png
-2. GitHub Pages should use main branch and /(root).
-3. Open the live HTTPS site in Chrome.
-4. Chrome menu → Install and create shortcut → Install.
-The page includes service-worker registration and offline caching.
+JUNO AI - Level 8 PWA
+Adds JUNO AI Assistant UI, offline smart fallback, quick student help and PWA caching.
+Real AI requires a secure backend at /api/chat. Never put an API key in index.html.
