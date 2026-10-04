@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JUNO AI - Student App</title>
+<meta name="theme-color" content="#182848">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#172033}
 header{background:#182848;color:white;padding:22px 18px;border-radius:0 0 22px 22px}
@@ -123,5 +128,10 @@ function renderTasks(){
 }
 function completeTask(i){let d=load();if(!d.done.includes(i)){d.done.push(i);d.xp+=tasks[i][2];if(d.done.length===tasks.length)d.streak++;save(d);renderTasks()}}
 function bonus(){let d=load();if(!d.bonus){d.bonus=true;d.xp+=25;save(d);alert('⭐ Bonus complete! +25 XP');renderTasks()}else alert('Bonus task already claimed today.')}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
 </script>
 </body></html>
