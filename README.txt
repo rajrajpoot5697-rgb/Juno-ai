@@ -1,10 +1,11 @@
-JUNO AI - Proper Installable PWA
-
-Upload/replace these files in the GitHub repository root:
-- index.html
-- manifest.webmanifest
-- sw.js
-- icons/icon-192.png
-- icons/icon-512.png
-
-After GitHub Pages redeploys, open the live URL in Chrome. The browser should offer an Install option, and the installed app opens without the normal browser address bar (standalone mode).
+JUNO AI — Level 7 PWA
+1. Upload/replace the repository files with:
+   index.html
+   manifest.webmanifest
+   sw.js
+   icons/icon-192.png
+   icons/icon-512.png
+2. GitHub Pages should use main branch and /(root).
+3. Open the live HTTPS site in Chrome.
+4. Chrome menu → Install and create shortcut → Install.
+The page includes service-worker registration and offline caching.

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JUNO AI - Student App</title>
+<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#182848">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#172033}
@@ -30,6 +30,11 @@ button.secondary{background:#e8edf7;color:#182848}.hidden{display:none}
 <body>
 <header><h1>🚀 JUNO AI</h1><div class="sub">Student • Study • Career • Business • Games</div></header>
 <main>
+<div id="installBox" class="card" style="display:none">
+<h2>📲 JUNO AI ko App jaisa banao</h2>
+<p class="note">Home screen se seedha JUNO AI kholo.</p>
+<button id="installBtn">🚀 Install JUNO AI</button>
+</div>
 <div class="card">
 <h2>🎮 Mini Games</h2>
 <button onclick="show('brain')">🧠 Brain Battle</button>
@@ -128,10 +133,30 @@ function renderTasks(){
 }
 function completeTask(i){let d=load();if(!d.done.includes(i)){d.done.push(i);d.xp+=tasks[i][2];if(d.done.length===tasks.length)d.streak++;save(d);renderTasks()}}
 function bonus(){let d=load();if(!d.bonus){d.bonus=true;d.xp+=25;save(d);alert('⭐ Bonus complete! +25 XP');renderTasks()}else alert('Bonus task already claimed today.')}
-</script>
-<script>
+
+/* PWA install + offline support */
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const box = document.getElementById('installBox');
+  if (box) box.style.display = 'block';
+});
+document.getElementById('installBtn')?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  const box = document.getElementById('installBox');
+  if (box) box.style.display = 'none';
+});
+window.addEventListener('appinstalled', () => {
+  const box = document.getElementById('installBox');
+  if (box) box.style.display = 'none';
+});
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 }
+
 </script>
 </body></html>
