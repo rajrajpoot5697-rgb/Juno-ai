@@ -1,106 +1,32 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07162f">
-<link rel="manifest" href="manifest.webmanifest">
-<title>JUNO AI — Level 9</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08111f"><link rel="manifest" href="manifest.webmanifest"><title>JUNO AI — Level 10</title>
 <style>
-:root{--bg:#07162f;--card:#0d2345;--card2:#102b54;--text:#f5f8ff;--muted:#aebdd4;--blue:#27b9ff;--purple:#8c5cff;--green:#27d98b;--orange:#ffad3d;--border:#23456f}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#06132a,#0b1f3d 55%,#07162f);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
-.app{max-width:760px;margin:auto;padding:18px 14px 88px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:10px}.robot{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#19bfff,#745cff);display:grid;place-items:center;font-size:25px;box-shadow:0 8px 25px #0006}.brand h1{font-size:22px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:2px 0 0}.level{border:1px solid #496d9d;border-radius:14px;padding:7px 10px;font-size:12px;background:#0b2141}.hero{background:linear-gradient(135deg,#102d58,#101d4c);border:1px solid var(--border);border-radius:24px;padding:20px;margin-bottom:14px}.hero h2{margin:0 0 6px;font-size:24px}.hero p{margin:0;color:var(--muted)}.ask{display:flex;gap:8px;margin-top:16px}.ask input{flex:1;min-width:0;border:1px solid #3d5f8d;background:#071a35;color:white;border-radius:16px;padding:14px;font-size:15px;outline:none}.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:700;color:#07162f;background:var(--blue);cursor:pointer}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}.tile{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;cursor:pointer;min-height:104px}.tile b{display:block;margin-top:8px}.tile span{font-size:12px;color:var(--muted)}.section{display:none}.section.active{display:block}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:17px;margin-bottom:12px}.card h3{margin:0 0 8px}.small{color:var(--muted);font-size:13px}.chat{height:340px;overflow:auto;background:#06162e;border:1px solid var(--border);border-radius:18px;padding:12px}.msg{padding:11px 13px;border-radius:15px;margin:8px 0;max-width:88%;line-height:1.45}.user{margin-left:auto;background:#123c70}.ai{background:#152c4c}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.chip{border:1px solid #3b5e8e;background:#0b2140;color:white;border-radius:999px;padding:8px 10px;cursor:pointer}.progress{height:10px;background:#07172f;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));width:70%}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:9px 0}.nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(740px,calc(100% - 20px));display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:#071a35eF;border:1px solid #2b4c76;border-radius:20px;padding:7px;backdrop-filter:blur(12px)}.nav button{background:none;border:0;color:#9eb0ca;padding:8px 2px;border-radius:13px;font-size:11px;cursor:pointer}.nav button.active{color:white;background:#14345e}.nav .ico{display:block;font-size:18px;margin-bottom:2px}.list{display:grid;gap:9px}.item{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:12px}.item strong{display:block}.back{margin-bottom:10px;background:none;color:white;border:1px solid var(--border);border-radius:12px;padding:8px 12px}.game{background:linear-gradient(135deg,#10395b,#241c59);border-radius:18px;padding:18px;text-align:center}.score{font-size:36px;font-weight:800}.hidden{display:none!important}@media(max-width:430px){.app{padding:13px 10px 88px}.hero h2{font-size:21px}.grid{gap:8px}.tile{padding:13px}}
-</style>
-</head>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#07101d;color:#eef4ff}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:760px;margin:auto;padding:18px 16px 92px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:24px;font-weight:800}.badge{padding:8px 11px;border-radius:14px;background:#15243a;color:#8ed7ff;font-weight:700}.hero{margin-top:18px;padding:20px;border:1px solid #20324c;border-radius:24px;background:linear-gradient(135deg,#0c1a2c,#101d30)}h1{font-size:27px;margin:0 0 7px}.muted{color:#aab8ca}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.card{background:#0d1929;border:1px solid #20324c;border-radius:19px;padding:15px}.card h3{margin:0 0 7px}.wide{grid-column:1/-1}.bar{height:10px;background:#1a2940;border-radius:99px;overflow:hidden}.fill{height:100%;background:#62c8ff;border-radius:99px;width:0}.task{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #20324c}.task:last-child{border-bottom:0}.task input{width:21px;height:21px}.task.done span{text-decoration:line-through;color:#77879b}.btn{border:0;border-radius:14px;padding:11px 14px;background:#62c8ff;color:#06101c;font-weight:800}.btn.secondary{background:#18283d;color:#eaf4ff}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.timer{font-size:42px;font-weight:900;text-align:center;padding:12px}.q{font-size:18px;font-weight:700;line-height:1.4}.opt{width:100%;text-align:left;margin-top:8px;background:#122239;color:#eaf4ff;border:1px solid #263b56;border-radius:13px;padding:12px}.opt.correct{border-color:#5ce1a1;background:#123328}.opt.wrong{border-color:#ff7777;background:#351c22}.result{margin-top:10px;color:#9fe7c0}.nav{position:fixed;bottom:0;left:0;right:0;background:#091322eF;border-top:1px solid #20324c;display:flex;justify-content:center;gap:8px;padding:9px}.nav button{background:transparent;color:#aebdd0;border:0;padding:10px 12px;border-radius:12px}.nav button.active{background:#14263d;color:#fff}.screen{display:none}.screen.active{display:block}.pill{display:inline-block;padding:6px 9px;background:#15263b;border-radius:10px;margin:4px 4px 0 0;color:#b8c8da}.career{display:grid;gap:9px}.career button{text-align:left}.small{font-size:13px}.notice{padding:10px;border-radius:12px;background:#111f32;color:#aebdd0;margin-top:10px}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.app{padding-left:12px;padding-right:12px}}
+</style></head>
 <body>
 <div class="app">
-  <header class="top">
-    <div class="brand"><div class="robot">🤖</div><div><h1>JUNO AI</h1><p>Your Study • Career • Life Partner</p></div></div>
-    <div class="level">👑 Level 9</div>
-  </header>
-
-  <main id="home" class="section active">
-    <div class="hero">
-      <h2>👋 Hey! Aaj kya karna hai?</h2>
-      <p>Study, career, business ya daily goals — JUNO se pucho.</p>
-      <div class="ask"><input id="homeAsk" placeholder="Ask JUNO..."><button class="btn" onclick="askFromHome()">➤</button></div>
-    </div>
-    <div class="grid">
-      <div class="tile" onclick="show('study')">📚<b>Study</b><span>Notes, quiz, plan</span></div>
-      <div class="tile" onclick="show('career')">🎓<b>Career</b><span>Stream, skills, roadmap</span></div>
-      <div class="tile" onclick="show('business')">💼<b>Business</b><span>Ideas, planning</span></div>
-      <div class="tile" onclick="show('games')">🎮<b>Games</b><span>Play & earn XP</span></div>
-    </div>
-    <div class="card"><h3>🔥 Today's Progress</h3><div class="row"><span>📚 Study</span><b>2/3 hrs</b></div><div class="progress"><div class="bar" style="width:67%"></div></div><div class="row"><span>🎯 Goals</span><b>3/5</b></div><div class="progress"><div class="bar" style="width:60%"></div></div></div>
-    <div class="card"><div class="row"><b>⭐ 420 XP</b><span>🔥 7 day streak</span></div><div class="progress"><div class="bar" style="width:70%"></div></div><p class="small">180 XP aur → Level 10</p></div>
-  </main>
-
-  <main id="juno" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>🤖 Ask JUNO</h3><div id="chat" class="chat"><div class="msg ai">Namaste! Main JUNO hoon. Study, Class 11, career, business ya goals ke baare mein pucho. 💙</div></div><div class="ask"><input id="chatInput" placeholder="Type a message..."><button class="btn" onclick="sendChat()">➤</button></div><div class="chips"><button class="chip" onclick="quick('Class 11 mein Science ya Commerce?')">Class 11 stream</button><button class="chip" onclick="quick('Mere liye study plan banao')">Study plan</button><button class="chip" onclick="quick('Low budget business ideas')">Business idea</button></div></div>
-  </main>
-
-  <main id="study" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>📚 Study Dashboard</h3><p class="small">Aaj ka target: 3 hours</p><div class="progress"><div class="bar" style="width:67%"></div></div></div>
-    <div class="list"><div class="item">🧮 <strong>Mathematics</strong><span class="small">Algebra • 1/3 chapters</span></div><div class="item">🔬 <strong>Science</strong><span class="small">Revision • 2/4 chapters</span></div><div class="item">📝 <strong>Quiz</strong><span class="small">10 questions • +15 XP</span></div></div>
-  </main>
-
-  <main id="career" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>🎓 Career Explorer</h3><p class="small">Interest ke hisaab se options explore karo.</p><button class="btn" onclick="careerQuiz()">Take Stream Quiz</button></div>
-    <div class="list"><div class="item">⚙️ <strong>Engineering</strong><span class="small">Maths + Science • Technology</span></div><div class="item">📊 <strong>Commerce & Finance</strong><span class="small">Business • Accounts • Economics</span></div><div class="item">🧬 <strong>Medical / Research</strong><span class="small">Biology • Health • Research</span></div></div>
-  </main>
-
-  <main id="business" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>💼 Business Idea Generator</h3><p class="small">Budget aur skill batao; JUNO starter ideas dega.</p><button class="btn" onclick="businessIdea()">Get an idea</button><div id="bizOut" class="item hidden" style="margin-top:12px"></div></div>
-    <div class="list"><div class="item">💻 Online tutoring</div><div class="item">📸 Photography / editing</div><div class="item">🍱 Local food/tiffin service</div></div>
-  </main>
-
-  <main id="games" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="game"><div>🧠 Brain Battle</div><div class="score" id="gameScore">0</div><p>7 + 8 = ?</p><div class="chips" style="justify-content:center"><button class="chip" onclick="gameAnswer(15)">15</button><button class="chip" onclick="gameAnswer(14)">14</button><button class="chip" onclick="gameAnswer(16)">16</button></div><p id="gameMsg" class="small">Correct answer = +10 XP</p></div>
-  </main>
-
-  <main id="progress" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>🏆 Your Progress</h3><div class="row"><b>Level 9</b><span>420 / 600 XP</span></div><div class="progress"><div class="bar" style="width:70%"></div></div></div>
-    <div class="grid"><div class="tile">🔥<b>7</b><span>Day streak</span></div><div class="tile">⭐<b>420</b><span>Total XP</span></div><div class="tile">🪙<b>120</b><span>Coins</span></div><div class="tile">🎯<b>3/5</b><span>Goals</span></div></div>
-  </main>
-
-  <main id="profile" class="section">
-    <button class="back" onclick="show('home')">← Home</button>
-    <div class="card"><h3>👤 My Profile</h3><p>JUNO Student</p><div class="row"><span>Level</span><b>9 👑</b></div><div class="row"><span>Streak</span><b>7 days 🔥</b></div></div>
-    <div class="list"><div class="item">🎯 My Goals</div><div class="item">🔔 Notifications</div><div class="item">⚙️ Settings</div><div class="item">💎 Premium — Coming later</div></div>
-  </main>
+<div class="top"><div class="brand">🤖 JUNO AI</div><div class="badge">Level 10</div></div>
+<section id="home" class="screen active"><div class="hero"><h1>🚀 Smart Study</h1><div class="muted">Study smarter, build your career and earn XP.</div><div class="row" style="margin-top:14px"><span class="pill">⭐ XP <b id="xp">0</b></span><span class="pill">🪙 Coins <b id="coins">0</b></span><span class="pill">🔥 Streak <b id="streak">1</b></span></div></div>
+<div class="grid"><div class="card wide"><h3>📚 Today's Study</h3><div class="bar"><div id="progress" class="fill"></div></div><p class="small muted"><span id="pct">0</span>% complete</p><div id="tasks"></div></div>
+<div class="card"><h3>⏱ Focus Timer</h3><div id="timer" class="timer">25:00</div><div class="row"><button class="btn" id="start">Start</button><button class="btn secondary" id="reset">Reset</button></div></div>
+<div class="card"><h3>🎯 Quiz Arena</h3><p class="muted">Test yourself and earn XP.</p><button class="btn" id="quizStart">Start Quiz</button></div>
+<div class="card wide"><h3>🧭 Career Guide</h3><p class="muted">Explore streams, careers, exams and simple roadmaps after Class 10.</p><div class="career"><button class="btn secondary" data-career="science">🔬 Science: Engineering, Doctor, Research</button><button class="btn secondary" data-career="commerce">📊 Commerce: CA, Finance, Business</button><button class="btn secondary" data-career="arts">🎨 Humanities: Law, Teaching, Civil Services</button><button class="btn secondary" data-career="skill">🛠 Skills: Design, Coding, Digital Work</button></div><div id="careerOut" class="notice">Choose an area to see a roadmap.</div></div></div></section>
+<section id="juno" class="screen"><div class="hero"><h1>🤖 Ask JUNO</h1><div class="muted">Offline smart help is available. Real AI needs a secure backend.</div></div><div class="card" style="margin-top:14px"><input id="ask" placeholder="e.g. How should I study Maths?" style="width:100%;padding:13px;border-radius:12px;border:1px solid #29405e;background:#091626;color:#fff"><button class="btn" id="askBtn" style="margin-top:10px">Ask</button><div id="answer" class="notice">Ask me about study, Class 11 streams, career or business.</div></div></section>
+<section id="quiz" class="screen"><div class="hero"><h1>🎯 Quiz Arena</h1><div id="quizBox" class="card" style="margin-top:14px">Tap “Start Quiz” to begin.</div></div></section>
+<section id="profile" class="screen"><div class="hero"><h1>👤 Progress</h1><div class="grid"><div class="card"><h3>⭐ XP</h3><div id="xp2">0</div></div><div class="card"><h3>🪙 Coins</h3><div id="coins2">0</div></div><div class="card"><h3>🔥 Streak</h3><div id="streak2">1 day</div></div><div class="card"><h3>🏆 Best Quiz</h3><div id="best">0/4</div></div></div><div class="notice">Level 10 is offline-first. Your progress is saved on this device.</div></div></section>
 </div>
-
-<nav class="nav">
-<button class="active" data-s="home" onclick="show('home')"><span class="ico">🏠</span>Home</button>
-<button data-s="study" onclick="show('study')"><span class="ico">📚</span>Learn</button>
-<button data-s="games" onclick="show('games')"><span class="ico">🎮</span>Play</button>
-<button data-s="juno" onclick="show('juno')"><span class="ico">🤖</span>JUNO</button>
-<button data-s="profile" onclick="show('profile')"><span class="ico">👤</span>Me</button>
-</nav>
-
+<nav class="nav"><button class="active" data-screen="home">🏠 Home</button><button data-screen="juno">🤖 JUNO</button><button data-screen="quiz">🎯 Quiz</button><button data-screen="profile">👤 Me</button></nav>
 <script>
-const replies=[
-[/science|commerce|stream/i,"Science mein Maths/Science subjects ke saath engineering, research jaise options milte hain. Commerce mein Accounts, Business Studies, Economics ke saath finance/business ke options milte hain. Apni interest aur strengths ke hisaab se choose karo."],
-[/study|padhai|revision/i,"Aaj 3 blocks try karo: 45 min concept, 10 min break, 45 min questions, phir 30 min revision. Sabse weak chapter ko pehle rakho."],
-[/business|business idea|kamai/i,"Low-budget start ke liye skill-based kaam useful ho sakta hai: tutoring, editing/design, local service ya small reselling. Pehle customer aur cost validate karo, phir paisa lagao."],
-[/career|job|future/i,"Career choose karte waqt interest, ability, required subjects, course duration aur realistic opportunities compare karo. JUNO mein Career section se roadmap explore kar sakte ho."]
-];
-function show(id){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.s===id));window.scrollTo({top:0,behavior:'smooth'})}
-function answer(q){for(const [r,a] of replies)if(r.test(q))return a;return"Main abhi offline smart mode mein hoon. Study, Class 11, career, business ya daily goals se related sawal pucho — main available guidance ke basis par help karunga."}
-function addMsg(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;const chat=document.getElementById('chat');chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
-function sendChat(){const i=document.getElementById('chatInput');const q=i.value.trim();if(!q)return;addMsg(q,'user');i.value='';setTimeout(()=>addMsg(answer(q),'ai'),250)}
-function quick(q){document.getElementById('chatInput').value=q;sendChat()}
-function askFromHome(){const q=document.getElementById('homeAsk').value.trim();if(!q)return;show('juno');document.getElementById('chatInput').value=q;sendChat()}
-function careerQuiz(){alert('Quick quiz: 1) Maths/technology pasand? 2) Accounts/business pasand? 3) Biology/health pasand? JUNO tumhare answers compare karke options samjhayega.')}
-function businessIdea(){const o=document.getElementById('bizOut');o.classList.remove('hidden');o.innerHTML='<strong>💡 Student Tutoring</strong><br><span class="small">Apne strong subject ko younger students ko padhakar start karo. Initial cost bahut kam rakh sakte ho; pehle 1–2 students ke saath test karo.</span>'}
-let score=0;function gameAnswer(n){const m=document.getElementById('gameMsg');if(n===15){score+=10;document.getElementById('gameScore').textContent=score;m.textContent='🎉 Correct! +10 XP';}else m.textContent='Try again — 7 + 8 ko dobara calculate karo.'}
-if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
-</script>
-</body>
-</html>
+const KEY='juno10';const defaults={xp:0,coins:0,streak:1,tasks:[false,false,false,false],best:0};let s=JSON.parse(localStorage.getItem(KEY)||'null')||defaults;function save(){localStorage.setItem(KEY,JSON.stringify(s));render()}function render(){xp.textContent=s.xp;coins.textContent=s.coins;streak.textContent=s.streak;xp2.textContent=s.xp;coins2.textContent=s.coins;streak2.textContent=s.streak+' day';best.textContent=s.best+'/4';let done=s.tasks.filter(Boolean).length;let p=Math.round(done/4*100);progress.style.width=p+'%';pct.textContent=p;tasks.innerHTML=['📖 30 min concept study','🧮 10 practice questions','🔁 20 min revision','📝 Complete today quiz'].map((t,i)=>`<label class="task ${s.tasks[i]?'done':''}"><input type="checkbox" ${s.tasks[i]?'checked':''} data-task="${i}"><span>${t}</span></label>`).join('');tasks.querySelectorAll('input').forEach(x=>x.onchange=()=>{let i=+x.dataset.task;if(!s.tasks[i]){s.tasks[i]=true;s.xp+=15;s.coins+=2;save()}})}render();
+tasks.addEventListener('change',()=>render());
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(b.dataset.screen).classList.add('active')});
+let secs=1500,timerId=null;function showTimer(){let m=Math.floor(secs/60),q=secs%60;timer.textContent=String(m).padStart(2,'0')+':'+String(q).padStart(2,'0')}start.onclick=()=>{if(timerId)return;timerId=setInterval(()=>{secs--;showTimer();if(secs<=0){clearInterval(timerId);timerId=null;s.xp+=20;s.coins+=5;save();alert('Focus complete! +20 XP +5 coins');}},1000)};reset.onclick=()=>{clearInterval(timerId);timerId=null;secs=1500;showTimer()};
+const career={science:'Science roadmap: Class 11–12 → choose PCM/PCB/PCMB based on interests → entrance/college options such as engineering, medicine or pure science. Focus on Maths/Physics/Chemistry or Biology as required.',commerce:'Commerce roadmap: Class 11–12 → Accounts, Business Studies and Economics → options include CA, finance, banking, management, entrepreneurship and related degrees.',arts:'Humanities roadmap: Class 11–12 → subjects such as History, Political Science, Geography, Psychology or Sociology → options include law, teaching, civil services, journalism and social sciences.',skill:'Skills roadmap: choose one practical skill such as coding, design, video editing or digital marketing → build projects/portfolio → internships/freelance/college pathways. Skill choice should match interest and practice time.'};document.querySelectorAll('[data-career]').forEach(b=>b.onclick=()=>careerOut.textContent=career[b.dataset.career]);
+const replies=[['math','For Maths, start with one concept, solve 10 easy questions, then 5 mixed questions and revise your mistakes.'],['study','Try 25 minutes focused study + 5 minutes break. Keep the phone away during the 25 minutes.'],['science','Science can lead toward engineering, medicine, research and many technical fields. Choose it when the subjects and study style fit you.'],['commerce','Commerce can lead toward CA, finance, banking, management and business.'],['business','Start small: identify a problem, test a simple solution, track costs and learn from customers.']];askBtn.onclick=()=>{let q=ask.value.toLowerCase();let r=replies.find(x=>q.includes(x[0]));answer.textContent=r?r[1]:'I can help with study plans, Class 11 streams, careers and basic business guidance. Try asking a specific question.'};
+const qs=[['7 × 8 = ?',['54','56','64','48'],'56'],['Capital of India?',['Mumbai','Lucknow','New Delhi','Jaipur'],'New Delhi'],['Chemical formula of water?',['CO₂','O₂','H₂O','NaCl'],'H₂O'],['25% of 12 = ?',['2','3','4','6'],'3']];let qi=0,score=0;function startQuiz(){qi=0;score=0;document.getElementById('quiz').classList.add('active');document.querySelectorAll('.screen').forEach(x=>{if(x.id!=='quiz')x.classList.remove('active')});document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.querySelector('[data-screen="quiz"]').classList.add('active');showQ()}function showQ(){if(qi>=qs.length){s.xp+=score*10;s.coins+=score*2;s.best=Math.max(s.best,score);save();quizBox.innerHTML=`<h3>Result: ${score}/4</h3><p class="result">+${score*10} XP · +${score*2} coins</p><button class="btn" onclick="startQuiz()">Play Again</button>`;return}let [q,ops,ans]=qs[qi];quizBox.innerHTML=`<div class="q">Q${qi+1}. ${q}</div>`+ops.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('');quizBox.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{quizBox.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(b.dataset.o===ans){b.classList.add('correct');score++}else{b.classList.add('wrong');[...quizBox.querySelectorAll('.opt')].find(x=>x.dataset.o===ans).classList.add('correct')}setTimeout(()=>{qi++;showQ()},550)})}quizStart.onclick=startQuiz;
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
