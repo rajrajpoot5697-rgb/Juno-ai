@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10172a">
+<title>JUNO AI — Levels 11 & 12</title>
+<style>
+:root{--bg:#0b1020;--panel:#151d33;--panel2:#1c2742;--text:#f5f7ff;--muted:#b5bfd8;--accent:#7c9cff;--green:#5ee0b5;--line:#2b3858}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#111a34,#080c18 60%);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+header{padding:18px 16px 12px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#0c1222ed;backdrop-filter:blur(12px);z-index:5;border-bottom:1px solid var(--line)}
+.logo{font-size:22px;font-weight:900;letter-spacing:1px}.logo span{color:var(--accent)}.level{font-size:12px;background:#26365e;padding:7px 10px;border-radius:999px;color:#dbe4ff}
+main{max-width:760px;margin:auto;padding:16px 14px 95px}.hero{background:linear-gradient(135deg,#273e79,#1a2443);border:1px solid #3a5189;padding:20px;border-radius:22px;margin-bottom:18px}.hero h1{font-size:26px;margin:0 0 8px}.hero p{color:#e1e7ff;margin:0 0 16px;line-height:1.5}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);background:#0d1427;color:var(--text);border-radius:12px;font:inherit}button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:11px 13px;background:var(--accent);color:#081126;font-weight:750}button.secondary{background:#273450;color:var(--text);border:1px solid #3b4a6b}button:active{transform:scale(.98)}
+.ask{display:flex;gap:8px}.ask input{min-width:0}.ask button{flex-shrink:0}
+h2{font-size:19px;margin:22px 0 12px}h3{font-size:16px;margin:0 0 7px}.muted{color:var(--muted);font-size:14px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px}.card .emoji{font-size:24px;margin-bottom:8px}.card p{margin:5px 0 0}
+.screen{display:none}.screen.active{display:block}.nav{position:fixed;bottom:0;left:0;right:0;display:flex;gap:4px;justify-content:space-around;padding:9px 5px calc(9px + env(safe-area-inset-bottom));background:#0b1020f5;border-top:1px solid var(--line);z-index:8}.nav button{flex:1;background:transparent;color:var(--muted);padding:8px 2px;font-size:12px}.nav button.active{background:#26375f;color:white}.nav .ni{display:block;font-size:18px;margin-bottom:2px}
+.actionrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.list{display:grid;gap:10px}.item{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--line)}.item p{margin:6px 0 0}.pill{display:inline-block;padding:4px 8px;background:#26365e;border-radius:999px;font-size:12px;color:#dbe4ff;margin:2px}
+.progress{height:9px;background:#283451;border-radius:99px;overflow:hidden;margin:10px 0}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--green));transition:width .2s}
+.question{padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:16px;margin-bottom:10px}.options{display:grid;gap:8px;margin-top:10px}.options button{text-align:left;background:#202c48;color:white;border:1px solid #354566}.options button.correct{border-color:var(--green);background:#153c3b}.options button.wrong{border-color:#ff8792;background:#49232f}
+footer{text-align:center;color:#8794b2;font-size:12px;margin-top:28px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<header><div class="logo">JUNO <span>AI</span></div><div class="level" id="levelBadge">LEVEL 11 + 12 • GROW</div></header>
+<main>
+<section id="home" class="screen active">
+ <div class="hero"><h1>Namaste! 👋</h1><p>Level 11 aur Level 12 ek saath! Padhai, board exam planning, career skills aur daily goals — sab ek jagah. JUNO tumhara offline-friendly growth companion hai.</p>
+ <div class="ask"><input id="askInput" placeholder="JUNO se kuch pucho…" aria-label="JUNO se sawal"><button onclick="askJuno()">Pucho</button></div><div id="answer" class="muted" style="margin-top:12px"></div></div>
+ <h2>Quick Actions</h2><div class="grid">
+  <div class="card" onclick="go('study')"><div class="emoji">📚</div><h3>Study Guide</h3><p class="muted">Daily padhai plan</p></div>
+  <div class="card" onclick="go('career')"><div class="emoji">🎯</div><h3>Career Guide</h3><p class="muted">11th stream aur careers</p></div>
+  <div class="card" onclick="go('business')"><div class="emoji">💼</div><h3>Business Guide</h3><p class="muted">Ideas, budget, planning</p></div>
+  <div class="card" onclick="go('quiz')"><div class="emoji">🧠</div><h3>Quiz Arena</h3><p class="muted">Sawal solve karo, points kamao</p></div>
+  <div class="card" onclick="go('tasks')"><div class="emoji">✅</div><h3>My Tasks</h3><p class="muted">Apna progress track karo</p></div>
+  <div class="card" onclick="go('profile')"><div class="emoji">🏆</div><h3>My Progress</h3><p class="muted">Points aur level</p></div>
+  <div class="card" onclick="go('level11')"><div class="emoji">🚀</div><h3>Level 11</h3><p class="muted">Stream, basics aur habits</p></div>
+  <div class="card" onclick="go('level12')"><div class="emoji">🎓</div><h3>Level 12</h3><p class="muted">Boards, revision aur next step</p></div>
+ </div>
+ <h2>Aaj ka mini goal</h2><div class="item"><b>25 minute focus session</b><p class="muted">Ek topic chuno, phone side mein rakho aur 25 minute padho.</p><div class="actionrow"><button onclick="startFocus()">▶ Focus shuru</button><button class="secondary" onclick="addTask()">＋ Task jodo</button></div><p id="focusStatus" class="muted"></p></div>
+</section>
+
+<section id="study" class="screen">
+ <h2>📚 Study Guide</h2><p class="muted">Chhote sessions mein padhna aur roz revision karna zyada aasaan hota hai.</p>
+ <div class="list">
+  <div class="item"><h3>1. 45-minute study routine</h3><p class="muted">5 min purana revise → 25 min naya concept → 10 min questions → 5 min galtiyan note karo.</p></div>
+  <div class="item"><h3>2. Class 10 ke liye</h3><p class="muted">Maths: roz 5–10 questions. Science: concept + diagram. Social Science: headings aur short answers. Languages: reading aur writing practice.</p></div>
+  <div class="item"><h3>3. Class 11 ki taiyari</h3><p class="muted">Apne interest aur marks ke hisaab se stream chuno. Science, Commerce aur Arts/Humanities — teeno se achhe career ban sakte hain.</p></div>
+ </div>
+ <h2>Apna study task</h2><div class="item"><input id="studyTask" placeholder="Jaise: Maths ke 5 questions"><div class="actionrow"><button onclick="saveTask('studyTask')">Task save karo</button></div></div>
+</section>
+
+<section id="career" class="screen">
+ <h2>🎯 Career Guide</h2><p class="muted">Stream chunne se pehle interest, subjects, course requirements aur apni situation compare karo.</p>
+ <div class="list">
+  <div class="item"><h3>🔬 Science</h3><p class="muted">Maths/technology, engineering, computer science, research; Biology ke saath healthcare aur life-science options. Kuch careers ke liye entrance exams aur specific subjects zaroori hote hain.</p><span class="pill">PCM</span><span class="pill">PCB</span><span class="pill">PCMB</span></div>
+  <div class="item"><h3>📊 Commerce</h3><p class="muted">Accounting, finance, banking, business, economics, management; aage B.Com, CA jaise options (eligibility aur exams check karein).</p></div>
+  <div class="item"><h3>🌍 Arts / Humanities</h3><p class="muted">History, politics, society, language, design aur public service. Law, teaching, media, civil services ki taiyari jaise raste ho sakte hain.</p></div>
+  <div class="item"><h3>👮 Police / Government jobs</h3><p class="muted">Har post ki age, education, physical standards aur exam alag hote hain. Sirf official recruitment notification se latest eligibility confirm karo.</p></div>
+ </div>
+ <h2>Apni preference</h2><div class="item"><label for="interest">Tumhe kis cheez mein interest hai?</label><select id="interest"><option value="tech">Computer / Maths / Technology</option><option value="bio">Biology / Healthcare</option><option value="business">Business / Accounts</option><option value="people">Society / Law / Government jobs</option><option value="creative">Writing / Design / Media</option></select><div class="actionrow"><button onclick="careerSuggest()">Mere options batao</button></div><p id="careerResult" class="muted"></p></div>
+</section>
+
+<section id="business" class="screen">
+ <h2>💼 Business Guide</h2><p class="muted">Pehle chhote budget se demand test karo. Kamai guaranteed nahi hoti; pehle customer aur kharcha samjho.</p>
+ <div class="list">
+  <div class="item"><h3>📱 Digital service</h3><p class="muted">Poster, invitation card, basic video editing ya social media posts banana seekho. Pehle 3 sample kaam banao, phir local shops/known people ko dikhao.</p><span class="pill">Low-cost start</span></div>
+  <div class="item"><h3>📖 Tuition / notes help</h3><p class="muted">Jis subject mein achhe ho, chhote students ko padhane ya revision sheets banane ka idea test kar sakte ho. Apne school ke rules aur guardian ki salah ka dhyan rakho.</p></div>
+  <div class="item"><h3>🛍️ Local reselling</h3><p class="muted">Pehle demand aur supplier verify karo. Udhaar lekar ya bina samjhe stock mat kharido; profit mein se delivery, returns aur other costs minus karo.</p></div>
+ </div>
+ <h2>Simple budget calculator</h2><div class="item"><label>Shuru karne ka budget (₹)</label><input id="budget" type="number" min="0" placeholder="Jaise 500"><label style="display:block;margin-top:10px">Ek sale ki keemat (₹)</label><input id="price" type="number" min="0" placeholder="Jaise 100"><label style="display:block;margin-top:10px">Ek sale ka total kharcha (₹)</label><input id="cost" type="number" min="0" placeholder="Jaise 60"><div class="actionrow"><button onclick="calcBudget()">Hisab lagao</button></div><p id="budgetResult" class="muted"></p></div>
+</section>
+
+<section id="level11" class="screen">
+ <h2>🚀 Level 11 — Strong Foundation</h2><p class="muted">Class 11 mein syllabus ka level badhta hai. Shuru se concepts samjho, notes banao aur har hafte revision karo.</p>
+ <div class="list">
+  <div class="item"><h3>📅 Weekly routine</h3><p class="muted">Roz 2–3 focused sessions apne timetable ke hisaab se rakho. Har session: concept samjho → examples dekho → khud questions solve karo. Hafte ke aakhir mein weak topics revise karo.</p></div>
+  <div class="item"><h3>🔬 Science stream</h3><p class="muted">Physics: concepts aur numericals; Chemistry: concepts, reactions aur practice; Maths: regular problem-solving; Biology: diagrams, terms aur active recall. Apne chosen subjects ke hisaab se plan badlo.</p></div>
+  <div class="item"><h3>📊 Commerce stream</h3><p class="muted">Accountancy mein daily practice, Business Studies mein headings/examples, Economics mein concepts aur graphs. Har chapter ke short notes aur practice questions banao.</p></div>
+  <div class="item"><h3>🌍 Humanities / Arts</h3><p class="muted">History, Political Science, Geography, Sociology ya languages mein key terms, timelines/maps, examples aur answer-writing practice karo. Sirf ratta nahi—apne shabdon mein explain karo.</p></div>
+  <div class="item"><h3>🧠 Level 11 habits challenge</h3><p class="muted">Is hafte: 5 din padhai ka record rakho, 1 weak topic dobara padho, aur Sunday ko 20-minute self-test do.</p><button onclick="completeChallenge('l11')">Challenge complete +15 points</button><p id="l11Status" class="muted"></p></div>
+ </div>
+</section>
+<section id="level12" class="screen">
+ <h2>🎓 Level 12 — Boards & Next Step</h2><p class="muted">Board preparation ko chhote milestones mein baanto. School/board syllabus aur official dates ko priority do.</p>
+ <div class="list">
+  <div class="item"><h3>🗓️ 3-stage plan</h3><p class="muted"><b>Stage 1:</b> syllabus aur weak chapters list karo. <b>Stage 2:</b> chapter-wise questions aur previous/sample papers solve karo. <b>Stage 3:</b> timed mock tests, mistakes notebook aur targeted revision.</p></div>
+  <div class="item"><h3>✍️ Answer-writing practice</h3><p class="muted">Question ko dhyan se padho, marks ke hisaab se points likho, steps/diagrams jahan zaroori hon dikhाओ, aur aakhir mein answer check karo.</p></div>
+  <div class="item"><h3>🎯 College / entrance planning</h3><p class="muted">Course ki eligibility, entrance exam, application deadline, fees aur scholarships ko official websites se verify karo. Ek primary option ke saath 2 backup options bhi rakho.</p></div>
+  <div class="item"><h3>💪 Exam-week wellbeing</h3><p class="muted">Neend, paani, regular meals aur short breaks ka dhyan rakho. Raat bhar jagkar padhne ke bajay repeatable routine rakho.</p></div>
+  <div class="item"><h3>🏁 Level 12 preparation challenge</h3><p class="muted">Ek sample paper ya 30-minute timed practice karo, phir 3 mistakes likhkar unhe revise karo.</p><button onclick="completeChallenge('l12')">Challenge complete +15 points</button><p id="l12Status" class="muted"></p></div>
+ </div>
+</section>
+
+<section id="quiz" class="screen">
+ <h2>🧠 Quiz Arena</h2><p class="muted">Har sahi jawab par 10 points. Practice ke liye hai.</p><div id="quizBox"></div><div class="actionrow"><button onclick="nextQuiz()">Agla sawal</button><button class="secondary" onclick="resetQuiz()">Quiz reset</button></div><p id="quizScore" class="muted"></p>
+</section>
+
+<section id="tasks" class="screen">
+ <h2>✅ My Tasks</h2><p class="muted">Task par tick karke complete mark karo.</p><div class="item"><div class="ask"><input id="newTask" placeholder="Naya task likho"><button onclick="addTask()">Jodo</button></div></div><div id="taskList" class="list" style="margin-top:12px"></div>
+</section>
+
+<section id="profile" class="screen">
+ <h2>🏆 My Progress</h2><div class="item"><h3 id="pointsText">0 points</h3><p class="muted">Quiz se points kamao aur tasks complete karke progress badhao.</p><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="muted"></p><div class="actionrow"><button class="secondary" onclick="clearProgress()">Progress reset</button></div></div>
+ <h2>Yaad rakho</h2><div class="item"><p class="muted">JUNO abhi offline-friendly student helper hai, live internet AI nahi. Jawab built-in guidance se aate hain. Personal progress isi browser mein save hota hai; browser data clear karne par mit sakta hai.</p></div>
+</section>
+<footer>JUNO AI • Learn a little every day ✨</footer>
+</main>
+<nav class="nav">
+ <button class="active" data-screen="home" onclick="go('home',this)"><span class="ni">⌂</span>Home</button>
+ <button data-screen="study" onclick="go('study',this)"><span class="ni">📚</span>Study</button>
+ <button data-screen="career" onclick="go('career',this)"><span class="ni">🎯</span>Career</button>
+ <button data-screen="business" onclick="go('business',this)"><span class="ni">💼</span>Business</button>
+ <button data-screen="tasks" onclick="go('tasks',this)"><span class="ni">✓</span>Tasks</button>
+</nav>
+<script>
+const KEY='junoGrowthV1';
+let state={points:0,tasks:[],quizIndex:0,answered:[],correct:0,challenges:[]};
+try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){};renderTasks();renderProgress()}
+function go(id,btn){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));window.scrollTo(0,0)}
+function askJuno(){let q=document.getElementById('askInput').value.trim().toLowerCase(),a='';if(!q)return;
+if(/level 11|class 11|11th|stream/.test(q))a='Level 11: pehle stream ke subjects aur syllabus samjho. Roz concept + practice + short revision karo. Level 11 tab mein stream-wise tips aur weekly challenge hai.';
+else if(/level 12|class 12|12th|board/.test(q))a='Level 12: syllabus ko milestones mein baanto, sample papers timed condition mein solve karo, mistakes notebook banao aur course/entrance ki deadlines official sites par check karo. Level 12 tab kholo.';
+else if(/career|science|commerce|arts|humanities/.test(q))a='Career ke liye interest, subjects, course eligibility, fees aur backup options compare karo. Career tab mein stream guide dekho.';
+else if(/study|padh|homework|exam|math|revision|time table/.test(q))a='Ek topic chuno: 25 minute concept, 10 minute questions, 5 minute mistakes note. Roz thoda revision karo. Study aur Level 11/12 tabs mein plans hain.';
+else if(/business|kamai|paise|budget/.test(q))a='Chhote idea se shuru karo, pehle demand test karo aur total kharche ka hisab rakho. Profit guaranteed nahi hota. Business tab ka calculator use karo.';
+else if(/police|daroga|si|crpf|army|ias|ips|neet|jee|cuet/.test(q))a='Har career/entrance ki eligibility, age, dates aur subjects alag ho sakte hain. Latest information official notification/site se confirm karo aur backup option bhi rakho.';
+else if(/hello|hi|namaste|hey/.test(q))a='Namaste! Main JUNO ka offline smart helper hoon. Level 11, Level 12, padhai, career ya business ke baare mein pucho.';
+else if(/stress|tension|thak/.test(q))a='Ek chhota step lo: paani piyo, 5 minute break lo, phir sirf ek manageable task chuno. Zarurat ho toh trusted adult/teacher se baat karo.';
+else a='Main abhi offline smart helper hoon, live internet AI nahi. Tum Level 11/12, study plan, career, quiz ya business ke baare mein puch sakte ho.';
+document.getElementById('answer').textContent=a}
+function completeChallenge(id){state.challenges=state.challenges||[];let el=document.getElementById(id==='l11'?'l11Status':'l12Status');if(state.challenges.includes(id)){el.textContent='Ye challenge pehle hi complete hai.';return}state.challenges.push(id);state.points+=15;save();el.textContent='Shabash! +15 points save ho gaye.'}
+
+function careerSuggest(){let v=document.getElementById('interest').value,txt={tech:'Maths/technology pasand hai toh PCM, computer science, IT ya engineering ke subject requirements compare karo.',bio:'Biology pasand hai toh PCB aur healthcare/life-science courses ki eligibility check karo.',business:'Business pasand hai toh Commerce, economics, accounting aur entrepreneurship explore karo.',people:'Society/government jobs pasand hain toh Humanities, law aur official recruitment pathways explore karo.',creative:'Creative kaam pasand hai toh Humanities ke saath design, writing, media aur portfolio skills explore karo.'};document.getElementById('careerResult').textContent=txt[v]}
+function calcBudget(){let b=Number(document.getElementById('budget').value),p=Number(document.getElementById('price').value),c=Number(document.getElementById('cost').value),r=document.getElementById('budgetResult');if(b<0||p<=0||c<0||!Number.isFinite(b+p+c)){r.textContent='Sahi numbers bharo.';return}let profit=p-c;r.textContent=profit<=0?'Har sale par profit nahi hai. Pehle kharcha kam ya price/demand dobara check karo.':`Ek sale ka estimated bacha hua paisa ₹${profit}. Budget se lagbhag ${Math.floor(b/Math.max(c,1))} unit ke kharche ka andaza lag sakta hai. Ye sirf hisab hai, kamai ki guarantee nahi.`}
+function saveTask(id){let v=document.getElementById(id).value.trim();if(v){state.tasks.push({text:v,done:false});document.getElementById(id).value='';save();alert('Task save ho gaya!')}}
+function addTask(){let el=document.getElementById('newTask'),v=el.value.trim();if(!v){go('tasks');el.focus();return}state.tasks.push({text:v,done:false});el.value='';save();go('tasks')}
+function toggleTask(i){state.tasks[i].done=!state.tasks[i].done;if(state.tasks[i].done)state.points+=2;save()}
+function deleteTask(i){state.tasks.splice(i,1);save()}
+function renderTasks(){let box=document.getElementById('taskList');if(!box)return;if(!state.tasks.length){box.innerHTML='<div class="item muted">Abhi koi task nahi. Upar se ek task jodo.</div>';return}box.innerHTML=state.tasks.map((t,i)=>`<div class="item"><label style="display:flex;gap:10px;align-items:center"><input style="width:auto" type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${i})"><span style="${t.done?'text-decoration:line-through;color:#aab5cc':''}">${escapeHTML(t.text)}</span></label><div class="actionrow"><button class="secondary" onclick="deleteTask(${i})">Delete</button></div></div>`).join('')}
+function escapeHTML(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+const quiz=[{q:'7 × 8 = ?',o:['54','56','64','48'],a:1},{q:'Bharat ki rajdhani kya hai?',o:['Mumbai','Lucknow','New Delhi','Jaipur'],a:2},{q:'Paani ka chemical formula?',o:['CO₂','H₂O','O₂','NaCl'],a:1},{q:'Ek ghante mein kitne minute?',o:['30','45','60','100'],a:2},{q:'Computer ka “CPU” aam taur par kya kehlata hai?',o:['Central Processing Unit','Control Power User','Computer Personal Unit','Central Print Utility'],a:0}];
+function nextQuiz(){let i=state.quizIndex%quiz.length,q=quiz[i],box=document.getElementById('quizBox');box.innerHTML=`<div class="question"><b>Sawal ${i+1}: ${q.q}</b><div class="options">${q.o.map((x,j)=>`<button onclick="answerQuiz(${i},${j},this)">${x}</button>`).join('')}</div><p id="quizFeedback" class="muted"></p></div>`;document.getElementById('quizScore').textContent=`Sahi jawab: ${state.correct} • Points: ${state.points}`}
+function answerQuiz(i,j,btn){if(state.answered.includes(i)){document.getElementById('quizFeedback').textContent='Is sawal ka jawab de chuke ho. Agla sawal dabao.';return}let q=quiz[i],opts=btn.parentElement.querySelectorAll('button');opts.forEach((b,k)=>{b.disabled=true;if(k===q.a)b.classList.add('correct')});if(j===q.a){state.points+=10;state.correct++;document.getElementById('quizFeedback').textContent='Sahi jawab! +10 points 🎉'}else{btn.classList.add('wrong');document.getElementById('quizFeedback').textContent='Koi baat nahi. Hara option sahi jawab hai.'}state.answered.push(i);state.quizIndex=(i+1)%quiz.length;save();document.getElementById('quizScore').textContent=`Sahi jawab: ${state.correct} • Points: ${state.points}`}
+function resetQuiz(){state.quizIndex=0;state.answered=[];state.correct=0;save();nextQuiz()}
+function startFocus(){document.getElementById('focusStatus').textContent='Focus session shuru! 25 minute ke liye ek topic par dhyan do. Timer band hone par khud break lena.';state.points+=1;save()}
+function renderProgress(){document.getElementById('pointsText').textContent=state.points+' points';let pct=state.points%100;document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').textContent=`Next level progress: ${pct}/100 points • Complete tasks aur quiz practice karo.`;document.getElementById('levelBadge').textContent='LEVEL '+(11+Math.floor(state.points/100))+' • GROW'}
+function clearProgress(){if(confirm('Points aur tasks reset kar dein?')){state={points:0,tasks:[],quizIndex:0,answered:[],correct:0};save();nextQuiz()}}
+renderTasks();renderProgress();nextQuiz();
+</script>
+</body>
+</html>
